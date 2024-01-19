@@ -1,13 +1,13 @@
 <h1 align="center">Hi 👋, I'm Albadit</h1>
-<h3 align="center">Media Developer in The Netherlands</h3>
+<h3 align="center">Software Developer in The Netherlands</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=albadit&label=Profile%20views&color=0e75b6&style=flat" alt="albadit" /> </p>
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=albadit" alt="albadit" /></a> </p>
 
-- 🔭 I’m currently working on [Python bot script](https://github.com/Albadit/bot)
+- 🔭 I’m currently working on [Nextjs Gym website](https://github.com/Albadit/bot)
 
-- 🌱 I’m currently learning **Python & C#**
+- 🌱 I’m currently learning **React**
 
 - 👨‍💻 All of my projects are available at [https://github.com/Albadit](https://github.com/Albadit)
 
