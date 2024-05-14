@@ -7,7 +7,7 @@
 
 <p align="left"> <a href="https://twitter.com/albadit3" target="blank"><img src="https://img.shields.io/twitter/follow/albadit3?logo=twitter&style=for-the-badge" alt="albadit3" /></a> </p>
 
-- 🔭 I’m currently working on **Nextjs Gym website**
+- 🔭 I’m currently working on **Nextjs website**
 
 - 🌱 I’m currently learning **React & Nextjs**
 
