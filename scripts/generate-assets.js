@@ -90,7 +90,6 @@ function header() {
 <text x="2" y="171" class="sans muted" font-size="20">developer tools, web platforms</text>
 <text x="2" y="198" class="sans muted" font-size="20">and the infrastructure under them.</text>
 <text x="2" y="246" class="mono faint" font-size="15">.NET · DNN · React · IIS · Azure</text>
-<text x="2" y="268" class="mono faint" font-size="15">Netherlands</text>
 <rect x="${px}" y="${py}" width="${pw}" height="${52 + sites.length * rowH - 4}" rx="12" style="fill:var(--panel);stroke:var(--line)"/>
 <text x="${px + 20}" y="${py + 30}" class="mono muted" font-size="14.5">sites</text>
 <text x="${px + pw - 18}" y="${py + 30}" text-anchor="end" class="mono faint" font-size="14.5">3 of 4 running<tspan class="cur">_</tspan></text>

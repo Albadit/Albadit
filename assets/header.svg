@@ -12,7 +12,6 @@
 <text x="2" y="171" class="sans muted" font-size="20">developer tools, web platforms</text>
 <text x="2" y="198" class="sans muted" font-size="20">and the infrastructure under them.</text>
 <text x="2" y="246" class="mono faint" font-size="15">.NET · DNN · React · IIS · Azure</text>
-<text x="2" y="268" class="mono faint" font-size="15">Netherlands</text>
 <rect x="400" y="40" width="439" height="232" rx="12" style="fill:var(--panel);stroke:var(--line)"/>
 <text x="420" y="70" class="mono muted" font-size="14.5">sites</text>
 <text x="821" y="70" text-anchor="end" class="mono faint" font-size="14.5">3 of 4 running<tspan class="cur">_</tspan></text>
