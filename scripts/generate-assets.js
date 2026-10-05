@@ -65,11 +65,11 @@ function header() {
   const H = 290;
   const sites = [
     ["dnnmanager.local", "DnnManager.NET", "running"],
-    ["absolve.local", "ABSOLVE", "running"],
-    ["orchestra.local", "eindstage", "running"],
+    ["dotnetforge.local", "DotNetForge", "running"],
+    ["livemocap.local", "LiveMocap", "running"],
     ["you.local", "next project", "idle"],
   ];
-  const px = 430, py = 40, pw = W - px - 1, rowH = 46;
+  const px = 400, py = 40, pw = W - px - 1, rowH = 46;
   let rows = "";
   sites.forEach(([host, name, st], i) => {
     const y = py + 52 + i * rowH;
@@ -77,7 +77,7 @@ function header() {
     rows += `<line x1="${px}" x2="${px + pw}" y1="${y - 14}" y2="${y - 14}" style="stroke:var(--line)"/>`;
     rows += `<circle cx="${px + 20}" cy="${y + 8}" r="4" ${live ? `class="pulse" style="fill:var(--live);animation-delay:${i * 0.35}s"` : `style="fill:var(--faint)"`}/>`;
     rows += `<text x="${px + 36}" y="${y + 13}" class="mono fg" font-size="15">${host}</text>`;
-    rows += `<text x="${px + 196}" y="${y + 13}" class="sans muted" font-size="15">${esc(name)}</text>`;
+    rows += `<text x="${px + 206}" y="${y + 13}" class="sans muted" font-size="15">${esc(name)}</text>`;
     rows += `<text x="${px + pw - 18}" y="${y + 13}" text-anchor="end" class="mono ${live ? "fg" : "faint"}" font-size="14.5">${st}</text>`;
   });
   const body = style(["sans400", "sans600", "mono400"], `
@@ -105,13 +105,13 @@ const STACK = [
     ["SQL", "", 3, "SQL"], ["Python", "python", 2], ["PHP", "php", 2], ["PowerShell", "", 2, "PS"], ["Bash", "gnubash", 2], ["Rust", "rust", 1]]],
   ["frameworks", "My core stack, and what I reach for next.", [
     [".NET", "dotnet", 3], ["DNN Platform", "", 3, "DNN"], ["React", "react", 3], ["Next.js", "nextdotjs", 3], ["Node.js", "nodedotjs", 3],
-    ["Vue", "vuedotjs", 2], ["Nuxt", "nuxt", 2], ["WPF", "", 2, "WPF"], [".NET MAUI", "dotnet", 2], ["2sxc", "", 2, "2s"], ["Django", "django", 1]]],
+    ["Vue", "vuedotjs", 2], ["Nuxt", "nuxt", 2], ["WPF", "", 2, "WPF"], [".NET MAUI", "dotnet", 2], ["Django", "django", 1]]],
   ["data", "Databases and ORMs.", [
     ["SQL Server", "", 3, "SQL"], ["PostgreSQL", "postgresql", 3], ["Supabase", "supabase", 2], ["Prisma", "prisma", 2], ["MySQL", "mysql", 2]]],
-  ["cloud", "Hosting, automation and Microsoft 365.", [
-    ["IIS", "", 3, "IIS"], ["Azure", "", 2, "Az"], ["Power Automate", "", 3, "PA"], ["AI Builder", "", 2, "AI"], ["Microsoft 365", "", 2, "365"], ["GitHub Actions", "githubactions", 2]]],
+  ["cloud", "Hosting, edge and deploys.", [
+    ["IIS", "", 3, "IIS"], ["Azure", "", 2, "Az"], ["Vercel", "vercel", 2], ["Cloudflare", "cloudflare", 2], ["GitHub Actions", "githubactions", 2]]],
   ["design", "Styling, motion and visuals.", [
-    ["Tailwind CSS", "tailwindcss", 3], ["Framer Motion", "framer", 2], ["Figma", "figma", 2], ["Photoshop", "", 2, "Ps"]]],
+    ["Tailwind CSS", "tailwindcss", 3], ["Framer Motion", "framer", 2], ["Figma", "figma", 2], ["Photoshop", "", 2, "Ps"], ["Blender", "blender", 2]]],
   ["tooling", "Build, ship and tinker.", [
     ["Git", "git", 3], ["Docker", "docker", 3], ["Linux", "linux", 2], ["Arduino", "arduino", 2], ["Raspberry Pi", "raspberrypi", 1], ["Unity", "unity", 1]]],
 ];
@@ -162,12 +162,18 @@ const PROJECTS = [
   ["dnnmanager", "DnnManager.NET", "Desktop app for DNN developers",
     ["Spin up a working DNN site in one click, with IIS and SQL Server", "configured for you. Batch start, stop and clone, keep-alive,", "Azure SQL import and built-in terminals."],
     [["C#", "", "C#"], [".NET 10", "dotnet"], ["WPF", "", "WPF"], ["IIS", "", "IIS"], ["Docker", "docker"]], "Albadit/DnnManager.NET"],
-  ["absolve", "ABSOLVE", "Landing page for a dark fantasy game",
-    ["An atmosphere-first site: ember particles, parallax, scroll-driven", "feature reveals and ambient audio, all driven from config."],
-    [["Next.js", "nextdotjs"], ["React 19", "react"], ["Tailwind 4", "tailwindcss"], ["Framer Motion", "framer"]], "Albadit/absolve"],
-  ["eindstage", "eindstage", "Graduation project · Hogeschool Rotterdam × Bond",
-    ["A reusable production platform for orchestras: planning, schedules", "and documents for several orchestra clients from one codebase."],
-    [["DNN", "", "DNN"], ["2sxc", "", "2s"], ["ASP.NET", "dotnet"], ["SQL Server", "", "SQL"]], "Albadit/eindstage"],
+  ["dotnetforge", "DotNetForge", "Hybrid CMS on ASP.NET Core",
+    ["A modular, lightweight CMS that runs as a traditional CMS with a visual admin, a headless CMS", "with a token-secured API, or both at once over the same content."],
+    [["C#", "", "C#"], [".NET 10", "dotnet"], ["ASP.NET Core", "dotnet"], ["EF Core", "", "EF"], ["SQLite", "sqlite"], ["PostgreSQL", "postgresql"]], "Albadit/DotNetForge"],
+  ["rageguard", "RageGuard", "Discord voice-moderation bot",
+    ["Listens to a selected member in voice, classifies the emotion of their speech with a", "wav2vec2 model and applies a timeout on repeated, high-confidence anger."],
+    [["Rust", "rust"], ["Python", "python"], ["FastAPI", "fastapi"], ["PyTorch", "pytorch"], ["Hugging Face", "huggingface"], ["Docker", "docker"]], "Albadit/RageGuard"],
+  ["madtyping", "MadTyping", "Terminal tool for League of Legends chat",
+    ["Pick a .txt or .md file in a searchable terminal UI and it types each line into the League", "chat through the Win32 SendInput API. Preview, hot-reload and cancel with Esc."],
+    [["Rust", "rust"], ["crossterm", "", "ct"], ["Win32 API", "", "W32"]], "Albadit/MadTyping"],
+  ["livemocap", "LiveMocap", "Real-time webcam motion capture for Blender",
+    ["Tracks your body with MediaPipe and retargets it live onto any Blender armature, with auto", "bone mapping, smoothing, foot lock, live recording and bake to action."],
+    [["Python", "python"], ["Blender", "blender"], ["MediaPipe", "mediapipe"], ["OpenCV", "opencv"]], "Albadit/LiveMocap"],
 ];
 function project([id, name, kicker, lines, tech, repo]) {
   const pad = 28, descY = 120, lh = 26;

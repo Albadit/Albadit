@@ -9,7 +9,7 @@ I build the tools other developers use every day, and the platforms they run on.
 
 <img src="./assets/h-stack.svg" width="100%" alt="Stack" />
 
-<img src="./assets/stack.svg" width="100%" alt="Tech stack: TypeScript, JavaScript, C#, HTML, CSS, SQL, Python, PHP, PowerShell, Bash, Rust; .NET, DNN Platform, React, Next.js, Node.js, Vue, Nuxt, WPF, .NET MAUI, 2sxc, Django; SQL Server, PostgreSQL, Supabase, Prisma, MySQL; IIS, Azure, Power Automate, AI Builder, Microsoft 365, GitHub Actions; Tailwind CSS, Framer Motion, Figma, Photoshop; Git, Docker, Linux, Arduino, Raspberry Pi, Unity" />
+<img src="./assets/stack.svg" width="100%" alt="Tech stack: TypeScript, JavaScript, C#, HTML, CSS, SQL, Python, PHP, PowerShell, Bash, Rust; .NET, DNN Platform, React, Next.js, Node.js, Vue, Nuxt, WPF, .NET MAUI, Django; SQL Server, PostgreSQL, Supabase, Prisma, MySQL; IIS, Azure, Vercel, Cloudflare, GitHub Actions; Tailwind CSS, Framer Motion, Figma, Photoshop, Blender; Git, Docker, Linux, Arduino, Raspberry Pi, Unity" />
 
 <br/>
 
@@ -17,9 +17,13 @@ I build the tools other developers use every day, and the platforms they run on.
 
 <a href="https://github.com/Albadit/DnnManager.NET"><img src="./assets/project-dnnmanager.svg" width="100%" alt="DnnManager.NET - desktop app for DNN developers" /></a>
 
-<a href="https://github.com/Albadit/absolve"><img src="./assets/project-absolve.svg" width="100%" alt="ABSOLVE - landing page for a dark fantasy game" /></a>
+<a href="https://github.com/Albadit/DotNetForge"><img src="./assets/project-dotnetforge.svg" width="100%" alt="DotNetForge - hybrid CMS on ASP.NET Core" /></a>
 
-<a href="https://github.com/Albadit/eindstage"><img src="./assets/project-eindstage.svg" width="100%" alt="eindstage - reusable orchestra production platform" /></a>
+<a href="https://github.com/Albadit/RageGuard"><img src="./assets/project-rageguard.svg" width="100%" alt="RageGuard - Discord voice-moderation bot" /></a>
+
+<a href="https://github.com/Albadit/MadTyping"><img src="./assets/project-madtyping.svg" width="100%" alt="MadTyping - terminal tool for League of Legends chat" /></a>
+
+<a href="https://github.com/Albadit/LiveMocap"><img src="./assets/project-livemocap.svg" width="100%" alt="LiveMocap - real-time webcam motion capture for Blender" /></a>
 
 <br/>
 
