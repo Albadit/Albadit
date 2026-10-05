@@ -1,7 +1,7 @@
 <!-- Visuals live in ./assets and follow the browser's light / dark theme.
      Edit scripts/generate-assets.js, then run `npm install && npm run build` to regenerate them. -->
 
-<img src="./assets/header.svg" width="100%" alt="Albadit — software engineer building developer tools, web platforms and the infrastructure under them" />
+<img src="./assets/header.svg" width="100%" alt="Albadit - software engineer building developer tools, web platforms and the infrastructure under them" />
 
 I build the tools other developers use every day, and the platforms they run on. Most of my work sits where .NET, DNN, the browser and IIS / Azure meet: desktop tooling, web modules, APIs and the automation that keeps it all deployed and backed up.
 
@@ -15,11 +15,11 @@ I build the tools other developers use every day, and the platforms they run on.
 
 <img src="./assets/h-work.svg" width="100%" alt="Selected work" />
 
-<a href="https://github.com/Albadit/DnnManager.NET"><img src="./assets/project-dnnmanager.svg" width="100%" alt="DnnManager.NET — desktop app for DNN developers" /></a>
+<a href="https://github.com/Albadit/DnnManager.NET"><img src="./assets/project-dnnmanager.svg" width="100%" alt="DnnManager.NET - desktop app for DNN developers" /></a>
 
-<a href="https://github.com/Albadit/absolve"><img src="./assets/project-absolve.svg" width="100%" alt="ABSOLVE — landing page for a dark fantasy game" /></a>
+<a href="https://github.com/Albadit/absolve"><img src="./assets/project-absolve.svg" width="100%" alt="ABSOLVE - landing page for a dark fantasy game" /></a>
 
-<a href="https://github.com/Albadit/eindstage"><img src="./assets/project-eindstage.svg" width="100%" alt="eindstage — reusable orchestra production platform" /></a>
+<a href="https://github.com/Albadit/eindstage"><img src="./assets/project-eindstage.svg" width="100%" alt="eindstage - reusable orchestra production platform" /></a>
 
 <br/>
 
