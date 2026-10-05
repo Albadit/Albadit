@@ -29,6 +29,8 @@ function style(faces, extra = "") {
 .fg{fill:var(--fg)}.muted{fill:var(--muted)}.faint{fill:var(--faint)}
 ${extra}</style>`;
 }
+// Drawn at GitHub's README column width so text renders ~1:1 instead of being scaled down.
+const W = 840;
 const svg = (w, h, body, title) =>
   `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(title)}"><title>${esc(title)}</title>${body}</svg>\n`;
 
@@ -60,36 +62,38 @@ function icon(slug, mono, x, y, s = 26) {
 
 // ---------- header ----------
 function header() {
-  const W = 1200, H = 290;
+  const H = 290;
   const sites = [
     ["dnnmanager.local", "DnnManager.NET", "running"],
     ["absolve.local", "ABSOLVE", "running"],
     ["orchestra.local", "eindstage", "running"],
-    ["you.local", "your next project", "idle"],
+    ["you.local", "next project", "idle"],
   ];
-  const px = 720, py = 44, pw = 440, rowH = 46;
+  const px = 448, py = 40, pw = W - px - 1, rowH = 46;
   let rows = "";
   sites.forEach(([host, name, st], i) => {
     const y = py + 52 + i * rowH;
     const live = st === "running";
     rows += `<line x1="${px}" x2="${px + pw}" y1="${y - 14}" y2="${y - 14}" style="stroke:var(--line)"/>`;
-    rows += `<circle cx="${px + 22}" cy="${y + 8}" r="4" ${live ? `class="pulse" style="fill:var(--live);animation-delay:${i * 0.35}s"` : `style="fill:var(--faint)"`}/>`;
-    rows += `<text x="${px + 40}" y="${y + 12}" class="mono fg" font-size="13.5">${host}</text>`;
-    rows += `<text x="${px + 230}" y="${y + 12}" class="sans muted" font-size="13.5">${esc(name)}</text>`;
-    rows += `<text x="${px + pw - 20}" y="${y + 12}" text-anchor="end" class="mono ${live ? "fg" : "faint"}" font-size="12">${st}</text>`;
+    rows += `<circle cx="${px + 20}" cy="${y + 8}" r="4" ${live ? `class="pulse" style="fill:var(--live);animation-delay:${i * 0.35}s"` : `style="fill:var(--faint)"`}/>`;
+    rows += `<text x="${px + 36}" y="${y + 13}" class="mono fg" font-size="14">${host}</text>`;
+    rows += `<text x="${px + 186}" y="${y + 13}" class="sans muted" font-size="14">${esc(name)}</text>`;
+    rows += `<text x="${px + pw - 18}" y="${y + 13}" text-anchor="end" class="mono ${live ? "fg" : "faint"}" font-size="13">${st}</text>`;
   });
   const body = style(["sans400", "sans600", "mono400"], `
 .pulse{animation:p 2.4s ease-out 1 both}
 @keyframes p{0%{opacity:.15}40%{opacity:1}100%{opacity:1}}
 .cur{animation:b 1.1s steps(1) infinite}@keyframes b{50%{opacity:0}}
 @media (prefers-reduced-motion: reduce){.pulse,.cur{animation:none}}`) +
-    `<text x="40" y="118" class="sans fg" font-size="76" font-weight="600" letter-spacing="-2.5">Albadit</text>
-<text x="44" y="164" class="sans muted" font-size="20">Software engineer building developer tools,</text>
-<text x="44" y="192" class="sans muted" font-size="20">web platforms and the infrastructure under them.</text>
-<text x="44" y="246" class="mono faint" font-size="13.5">.NET · DNN · React · IIS · Azure — Netherlands</text>
+    `<text x="0" y="100" class="sans fg" font-size="68" font-weight="600" letter-spacing="-2.2">Albadit</text>
+<text x="2" y="144" class="sans muted" font-size="19">Software engineer building</text>
+<text x="2" y="171" class="sans muted" font-size="19">developer tools, web platforms</text>
+<text x="2" y="198" class="sans muted" font-size="19">and the infrastructure under them.</text>
+<text x="2" y="246" class="mono faint" font-size="13.5">.NET · DNN · React · IIS · Azure</text>
+<text x="2" y="268" class="mono faint" font-size="13.5">Netherlands</text>
 <rect x="${px}" y="${py}" width="${pw}" height="${52 + sites.length * rowH - 4}" rx="12" style="fill:var(--panel);stroke:var(--line)"/>
-<text x="${px + 20}" y="${py + 30}" class="mono muted" font-size="12.5">sites</text>
-<text x="${px + pw - 20}" y="${py + 30}" text-anchor="end" class="mono faint" font-size="12.5">3 of 4 running<tspan class="cur">_</tspan></text>
+<text x="${px + 20}" y="${py + 30}" class="mono muted" font-size="13">sites</text>
+<text x="${px + pw - 18}" y="${py + 30}" text-anchor="end" class="mono faint" font-size="13">3 of 4 running<tspan class="cur">_</tspan></text>
 ${rows}`;
   return svg(W, H, body, "Albadit — software engineer building developer tools, web platforms and infrastructure");
 }
@@ -120,21 +124,15 @@ function bars(x, y, lvl) {
   return s;
 }
 function stack() {
-  const W = 1200, chipH = 40, gap = 10, colX = 340, right = W - 40, fsz = 13.5, cw = fsz * 0.6;
-  let y = 64, out = "";
-  out += `<text x="40" y="34" class="mono" font-size="16"><tspan class="muted">const</tspan> <tspan class="fg">stack</tspan> <tspan class="muted">= {</tspan></text>`;
-  const top = 56;
+  const chipH = 40, gap = 10, colX = 36, right = W - 1, fsz = 14, cw = fsz * 0.6;
+  let y = 58, out = "";
+  out += `<text x="1" y="26" class="mono" font-size="16"><tspan class="muted">const</tspan> <tspan class="fg">stack</tspan> <tspan class="muted">= {</tspan></text>`;
+  const top = 44;
   for (const [key, comment, items] of STACK) {
-    // left column
-    out += `<text x="80" y="${y + 25}" class="mono fg" font-size="15" font-weight="500">${key}<tspan class="muted">:</tspan></text>`;
-    const words = ("// " + comment).split(" "); let line = "", ly = y + 50;
-    for (const w of words) {
-      if ((line + " " + w).trim().length > 30) { out += `<text x="80" y="${ly}" class="mono faint" font-size="12.5">${esc(line.trim())}</text>`; ly += 19; line = ""; }
-      line += " " + w;
-    }
-    out += `<text x="80" y="${ly}" class="mono faint" font-size="12.5">${esc(line.trim())}</text>`;
-    // chips
-    let cx = colX, cy = y;
+    // key and comment on one line, chips wrap underneath
+    out += `<text x="${colX}" y="${y + 14}" class="mono fg" font-size="15" font-weight="500">${key}<tspan class="muted">:</tspan>` +
+      `<tspan class="faint" font-size="13.5" font-weight="400" dx="12">// ${esc(comment)}</tspan></text>`;
+    let cx = colX, cy = y + 30;
     for (const [name, slug, lvl, mono] of items) {
       const w = 10 + 26 + 10 + name.length * cw + 14 + 13 + 12;
       if (cx + w > right) { cx = colX; cy += chipH + gap; }
@@ -144,14 +142,14 @@ function stack() {
       out += bars(cx + w - 26, cy + 13, lvl);
       cx += w + gap;
     }
-    y = Math.max(cy + chipH, ly + 6) + 42;
+    y = cy + chipH + 34;
   }
-  out += `<line x1="52" x2="52" y1="${top}" y2="${y - 34}" style="stroke:var(--line)"/>`;
-  out += `<text x="40" y="${y - 2}" class="mono muted" font-size="16">}</text>`;
+  out += `<line x1="10" x2="10" y1="${top}" y2="${y - 26}" style="stroke:var(--line)"/>`;
+  out += `<text x="1" y="${y - 2}" class="mono muted" font-size="16">}</text>`;
   const legY = y - 2;
-  out += bars(right - 300, legY - 13, 3) + `<text x="${right - 282}" y="${legY}" class="mono faint" font-size="12">daily</text>`;
-  out += bars(right - 220, legY - 13, 2) + `<text x="${right - 202}" y="${legY}" class="mono faint" font-size="12">comfortable</text>`;
-  out += bars(right - 90, legY - 13, 1) + `<text x="${right - 72}" y="${legY}" class="mono faint" font-size="12">learning</text>`;
+  out += bars(right - 290, legY - 13, 3) + `<text x="${right - 272}" y="${legY}" class="mono faint" font-size="13">daily</text>`;
+  out += bars(right - 212, legY - 13, 2) + `<text x="${right - 194}" y="${legY}" class="mono faint" font-size="13">comfortable</text>`;
+  out += bars(right - 84, legY - 13, 1) + `<text x="${right - 66}" y="${legY}" class="mono faint" font-size="13">learning</text>`;
   return svg(W, y + 18, style(["mono400", "mono500"], iconCss()) + out, "Tech stack: languages, frameworks, data, cloud, design and tooling");
 }
 
@@ -168,26 +166,35 @@ const PROJECTS = [
     [["DNN", "", "DNN"], ["2sxc", "", "2s"], ["ASP.NET", "dotnet"], ["SQL Server", "", "SQL"]], "Albadit/eindstage"],
 ];
 function project([id, name, kicker, lines, tech, repo]) {
-  const W = 1200, H = 196;
+  const pad = 28, descY = 116, lh = 24;
+  // rewrap the description to the narrower card
+  const wrapped = [];
+  let line = "";
+  for (const w of lines.join(" ").split(" ")) {
+    if ((line + " " + w).trim().length > 100) { wrapped.push(line.trim()); line = ""; }
+    line += " " + w;
+  }
+  wrapped.push(line.trim());
+  const sepY = descY + (wrapped.length - 1) * lh + 26, techY = sepY + 18, H = techY + 24 + pad;
   let out = `<rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="14" style="fill:var(--panel);stroke:var(--line)"/>`;
-  out += `<text x="36" y="58" class="sans fg" font-size="28" font-weight="600" letter-spacing="-0.6">${esc(name)}</text>`;
-  out += `<text x="36" y="86" class="sans muted" font-size="15">${esc(kicker)}</text>`;
-  lines.forEach((l, i) => out += `<text x="36" y="${122 + i * 22}" class="sans fg" font-size="15" opacity=".86">${esc(l)}</text>`);
-  // right: tech list
-  out += `<text x="800" y="52" class="mono faint" font-size="12.5">built with</text>`;
-  tech.forEach(([t, slug, mono], k) => {
-    const tx = 800 + (k % 2) * 180, ty = 68 + Math.floor(k / 2) * 34;
-    out += icon(slug, mono || t.slice(0, 2), tx, ty, 24);
-    out += `<text x="${tx + 34}" y="${ty + 17}" class="mono fg" font-size="13">${esc(t)}</text>`;
+  out += `<text x="${pad}" y="56" class="sans fg" font-size="27" font-weight="600" letter-spacing="-0.6">${esc(name)}</text>`;
+  out += `<text x="${W - pad}" y="54" text-anchor="end" class="mono faint" font-size="13">github.com/${repo}</text>`;
+  out += `<text x="${pad}" y="84" class="sans muted" font-size="15.5">${esc(kicker)}</text>`;
+  wrapped.forEach((l, i) => out += `<text x="${pad}" y="${descY + i * lh}" class="sans fg" font-size="15.5" opacity=".88">${esc(l)}</text>`);
+  // bottom: tech row
+  out += `<line x1="${pad}" x2="${W - pad}" y1="${sepY}" y2="${sepY}" style="stroke:var(--line)"/>`;
+  let tx = pad;
+  tech.forEach(([t, slug, mono]) => {
+    out += icon(slug, mono || t.slice(0, 2), tx, techY, 24);
+    out += `<text x="${tx + 32}" y="${techY + 17}" class="mono fg" font-size="13.5">${esc(t)}</text>`;
+    tx += 32 + t.length * 13.5 * 0.6 + 24;
   });
-  out += `<line x1="770" x2="770" y1="34" y2="${H - 34}" style="stroke:var(--line)"/>`;
-  out += `<text x="${W - 36}" y="${H - 28}" text-anchor="end" class="mono faint" font-size="12.5">github.com/${repo}</text>`;
   fs.writeFileSync(`${OUT}/project-${id}.svg`, svg(W, H, style(["sans400", "sans600", "mono400"], iconCss()) + out, `${name}: ${kicker}`));
 }
 
 // ---------- section heading ----------
 function heading(id, text, note) {
-  const W = 1200, H = 64;
+  const H = 64;
   const out = `<text x="0" y="40" class="sans fg" font-size="24" font-weight="600" letter-spacing="-0.4">${esc(text)}</text>` +
     (note ? `<text x="${W}" y="40" text-anchor="end" class="mono faint" font-size="13">${esc(note)}</text>` : "") +
     `<line x1="0" x2="${W}" y1="${H - 4}" y2="${H - 4}" style="stroke:var(--line)"/>`;
