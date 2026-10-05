@@ -106,11 +106,13 @@ const STACK = [
     [".NET", "dotnet", 3], ["DNN Platform", "", 3, "DNN"], ["React", "react", 3], ["Next.js", "nextdotjs", 3], ["Node.js", "nodedotjs", 3],
     ["Vue", "vuedotjs", 2], ["Nuxt", "nuxt", 2], ["WPF", "", 2, "WPF"], [".NET MAUI", "dotnet", 2], ["Django", "django", 1]]],
   ["data", "Databases and ORMs.", [
-    ["SQL Server", "", 3, "SQL"], ["PostgreSQL", "postgresql", 3], ["Supabase", "supabase", 2], ["Prisma", "prisma", 2], ["MySQL", "mysql", 2]]],
+    ["SQL Server", "", 3, "SQL"], ["PostgreSQL", "postgresql", 3], ["Supabase", "supabase", 2], ["Prisma", "prisma", 2], ["MySQL", "mysql", 2], ["SQLite", "sqlite", 2]]],
   ["cloud", "Hosting, edge and deploys.", [
     ["IIS", "", 3, "IIS"], ["Azure", "", 2, "Az"], ["Vercel", "vercel", 2], ["Cloudflare", "cloudflare", 2], ["GitHub Actions", "githubactions", 2]]],
   ["design", "Styling, motion and visuals.", [
     ["Tailwind CSS", "tailwindcss", 3], ["Framer Motion", "framer", 2], ["Figma", "figma", 2], ["Photoshop", "", 2, "Ps"], ["Blender", "blender", 2]]],
+  ["ai", "Models, vision and ML.", [
+    ["PyTorch", "pytorch", 1], ["Hugging Face", "huggingface", 1], ["MediaPipe", "mediapipe", 2], ["OpenCV", "opencv", 2]]],
   ["tooling", "Build, ship and tinker.", [
     ["Git", "git", 3], ["Docker", "docker", 3], ["Linux", "linux", 2], ["Arduino", "arduino", 2], ["Raspberry Pi", "raspberrypi", 1], ["Unity", "unity", 1]]],
 ];
@@ -145,15 +147,15 @@ function stack() {
   }
   out += `<line x1="10" x2="10" y1="${top}" y2="${y - 26}" style="stroke:var(--line)"/>`;
   out += `<text x="1" y="${y - 2}" class="mono muted" font-size="17">}</text>`;
-  const legY = y - 2;
-  // legend, laid out right-to-left
-  let lx = right;
-  for (const [label, lvl] of [["learning", 1], ["comfortable", 2], ["daily", 3]]) {
-    lx -= label.length * 14 * 0.6;
-    out += bars(lx - 19, legY - 13, lvl) + `<text x="${lx}" y="${legY}" class="mono faint" font-size="14">${label}</text>`;
-    lx -= 19 + 22;
+  // legend, under the closing brace
+  const legY = y + 44;
+  out += `<text x="1" y="${legY}" class="mono faint" font-size="14">// legend:</text>`;
+  let lx = 1 + 10 * 14 * 0.6 + 18;
+  for (const [label, lvl] of [["used daily", 3], ["comfortable", 2], ["learning", 1]]) {
+    out += bars(lx, legY - 13, lvl) + `<text x="${lx + 19}" y="${legY}" class="mono faint" font-size="14">${label}</text>`;
+    lx += 19 + label.length * 14 * 0.6 + 20;
   }
-  return svg(W, y + 18, style(["mono400", "mono500"], iconCss()) + out, "Tech stack: languages, frameworks, data, cloud, design and tooling");
+  return svg(W, legY + 16,style(["mono400", "mono500"], iconCss()) + out, "Tech stack: languages, frameworks, data, cloud, design, ai and tooling");
 }
 
 // ---------- project rows ----------

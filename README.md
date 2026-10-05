@@ -9,7 +9,7 @@ I build the tools other developers use every day, and the platforms they run on.
 
 <img src="./assets/h-stack.svg" width="100%" alt="Stack" />
 
-<img src="./assets/stack.svg" width="100%" alt="Tech stack: TypeScript, JavaScript, C#, HTML, CSS, SQL, Python, PHP, PowerShell, Bash, Rust; .NET, DNN Platform, React, Next.js, Node.js, Vue, Nuxt, WPF, .NET MAUI, Django; SQL Server, PostgreSQL, Supabase, Prisma, MySQL; IIS, Azure, Vercel, Cloudflare, GitHub Actions; Tailwind CSS, Framer Motion, Figma, Photoshop, Blender; Git, Docker, Linux, Arduino, Raspberry Pi, Unity" />
+<img src="./assets/stack.svg" width="100%" alt="Tech stack: TypeScript, JavaScript, C#, HTML, CSS, SQL, Python, PHP, PowerShell, Bash, Rust; .NET, DNN Platform, React, Next.js, Node.js, Vue, Nuxt, WPF, .NET MAUI, Django; SQL Server, PostgreSQL, Supabase, Prisma, MySQL, SQLite; IIS, Azure, Vercel, Cloudflare, GitHub Actions; Tailwind CSS, Framer Motion, Figma, Photoshop, Blender; PyTorch, Hugging Face, MediaPipe, OpenCV; Git, Docker, Linux, Arduino, Raspberry Pi, Unity" />
 
 <br/>
 
